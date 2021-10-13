@@ -20,4 +20,11 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 
+Route::resource('posts',HomeController::class);
+
+Route::view('/test','about');
+
+Route::get('/hello', [HomeController::class,'hello'])->name('hello');
+Route::get('/hi', [HomeController::class,'hi'])->name('hi');
+
 
