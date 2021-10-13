@@ -16,15 +16,33 @@
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
             @method('PUT')
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" id="name" name="name"  value="{{ $post->name }}">
             </div>
+
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" id="description" name="description">
-                    {{ $post->description }}
-                </textarea>
+                <textarea class="form-control" id="description" name="description">{{ $post->description }}</textarea>
+                
+            </div>
+
+            <div class="form-group">
+                <select name="category_id" id="" class="form-control">
+                    <option value="">Select Category</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : ' '}}>{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

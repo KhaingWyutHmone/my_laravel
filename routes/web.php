@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 
-Route::resource('posts',HomeController::class);
+Route::resource('posts',HomeController::class)->middleware('auth');
 
 Route::view('/test','about');
 
@@ -28,3 +29,6 @@ Route::get('/hello', [HomeController::class,'hello'])->name('hello');
 Route::get('/hi', [HomeController::class,'hi'])->name('hi');
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', [HomeController::class, 'index'])->name('dashboard');
+Route::get('logout', [AuthController::class, 'logout']);

@@ -16,6 +16,8 @@
             <div>
                 <h5 class="card-title">{{ $post->name }}</h5>
                 <p class="card-text">{{ $post->description }}</p>
+                <p class="card-text" style="font-style:italic;">Category : {{ $post->category->name }}</p>
+
                 <!-- <a href="/posts/{{ $post->id }}" class="btn btn-primary">Read More</a> -->
             </div>
             <hr> 

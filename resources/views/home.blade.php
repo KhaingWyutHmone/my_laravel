@@ -6,6 +6,8 @@
     <h2 style="text-align: center; margin-top : 2%; margin-bottom : 2%">Khaing's Blog</h2>
     <div class="">
         <a href="/posts/create" class="btn btn-info">New Post</a>
+        <a href="/logout" class="btn btn-success">Logout</a>
+        
     </div>
     <br>
     <div class="card">
